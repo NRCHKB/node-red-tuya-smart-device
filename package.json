@@ -2,7 +2,10 @@
   "name": "@nrchkb/node-red-tuya-smart-device",
   "version": "0.1.0",
   "description": "A node-red module to interact with the tuya smart devices",
-  "repository": "https://github.com/NRCHKB/node-red-tuya-smart-device",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NRCHKB/node-red-tuya-smart-device.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
