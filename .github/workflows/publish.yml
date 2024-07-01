@@ -18,7 +18,7 @@ jobs:
       - name: Publish
         run: |
           npm ci
-          npm publish
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NODE_TKN}}
       - name: Update Node-Red flow-library
