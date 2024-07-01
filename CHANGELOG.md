@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0 - 2024-07-01
+
+### Changed
+
+- Forked :)
+
+### Added
+
+- You can now provide Query Properties Map for Smart Device, it will make dps to be translated into human-readable format. You can generate the map on tuya IoT Platform > Device Control > Query Properties
+
+# Legacy Changelog
+
 ## 5.3.0
 
 - Added log level control to each node
@@ -12,19 +24,19 @@
 
 ## 5.1.0
 
-- Update tuya CLI to v7.5.1 (https://github.com/vinodsr/node-red-contrib-tuya-smart-device/pull/110)
+- Update tuya CLI to v7.5.1 (https://github.com/NRCHKB/node-red-tuya-smart-device/pull/110)
 
 ## 5.0.1
 
-- Fix error validating the creds in the view mode. This is an known issue [node-red#3420](https://github.com/node-red/node-red/issues/3420)
+- Fix error validating the credentials in the view mode. This is a known issue [node-red#3420](https://github.com/node-red/node-red/issues/3420)
 
 ## 5.0.0
 
 - Updated TuyaAPI to `7.3.0`
-- Added support to store device Id and device Key as credentials [#77](https://github.com/vinodsr/node-red-contrib-tuya-smart-device/issues/77)
+- Added support to store device-id and device-key as credentials [#77](https://github.com/NRCHKB/node-red-tuya-smart-device/issues/77)
 - Changed the default find timeout value to 10 seconds
 - Renamed `tuya smart device generic` node to `tuya smart device hub`
-  > Thanks to [foxylion](https://github.com/foxylion) for suggesting the crendentials feature
+  > Thanks to [foxylion](https://github.com/foxylion) for suggesting the credentials feature
 
 ## 4.1.1
 
@@ -37,13 +49,13 @@
 ## 4.1.0
 
 - Added CONTROL commands as input (CONNECT, DISCONNECT, RECONNECT)
-- Seperate output node for device status and client status
+- Separate output node for device status and client status
 - Dynamically set the find and retry timeout (Not saved permanently in the config)
 - Disable auto connect on start
 
 ## 4.0.2
 
-- Added support for both data and dp-refresh event [#54](https://github.com/vinodsr/node-red-contrib-tuya-smart-device/issues/54)
+- Added support for both data and dp-refresh event [#54](https://github.com/NRCHKB/node-red-tuya-smart-device/issues/54)
 
 ## 4.0.1
 
@@ -51,15 +63,15 @@
 
 ## 4.0.0
 
-- Update to Tuya 7.1.0. Closes [#51](https://github.com/vinodsr/node-red-contrib-tuya-smart-device/issues/51)
+- Update to Tuya 7.1.0. Closes [#51](https://github.com/NRCHKB/node-red-tuya-smart-device/issues/51)
 
 ## 3.1.0
 
-- Added support for catch node. If there a catch node in the flow, the tuya smart device node will not throw any error to the debug window. Implementing [#47](https://github.com/vinodsr/node-red-contrib-tuya-smart-device/issues/47)
+- Added support for catch node. If there is a catch node in the flow, the tuya smart device node will not throw any error to the debug window. Implementing [#47](https://github.com/NRCHKB/node-red-tuya-smart-device/issues/47)
 
 ## 3.0.2
 
-- Fixes [#43](https://github.com/vinodsr/node-red-contrib-tuya-smart-device/issues/43)
+- Fixes [#43](https://github.com/NRCHKB/node-red-tuya-smart-device/issues/43)
 
 ## 3.0.1
 
@@ -67,21 +79,21 @@
 
 ## 3.0.0
 
-Fixes [#35](https://github.com/vinodsr/node-red-contrib-tuya-smart-device/issues/35)
-Fixes [#39](https://github.com/vinodsr/node-red-contrib-tuya-smart-device/issues/39)
+Fixes [#35](https://github.com/NRCHKB/node-red-tuya-smart-device/issues/35)
+Fixes [#39](https://github.com/NRCHKB/node-red-tuya-smart-device/issues/39)
 
 - Optimized code
 
 ## 2.0.0
 
-Fixes [#33](https://github.com/vinodsr/node-red-contrib-tuya-smart-device/issues/33)
+Fixes [#33](https://github.com/NRCHKB/node-red-tuya-smart-device/issues/33)
 
 - Tuya api library updated to 6.1.1
 - No more null data payload on json undefined error. :)
 
 ## 1.2.1
 
-Fixes [#25](https://github.com/vinodsr/node-red-contrib-tuya-smart-device/issues/25)
+Fixes [#25](https://github.com/NRCHKB/node-red-tuya-smart-device/issues/25)
 
 ## 1.2.0
 

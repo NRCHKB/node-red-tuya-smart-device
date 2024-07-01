@@ -1,7 +1,7 @@
 <script type="text/javascript">
   RED.nodes.registerType('tuya-smart-device', {
-    category: 'smarthome',
-    color: '#C7E9C0',
+    category: 'tuya',
+    color: '#fccdcd',
     credentials: {
       secretConfig: {
         value: '',
@@ -79,12 +79,26 @@
       tuyaVersion: { value: '3.1', required: false },
       eventMode: { value: 'event-both', required: true },
       logLevel: { value: 'log-level-debug', required: false },
+      queryPropertiesMap: {
+        required: false, validate: function (value) {
+          if (value) {
+            try {
+              JSON.parse(value);
+              return true;
+            } catch (e) {
+              return false;
+            }
+          }
+          return true
+        }
+      }
     },
     inputs: 1,
     outputs: 2,
     inputLabels: 'Command for the device',
     outputLabels: ['Data from the device', 'Client State'],
-    icon: 'bridge.svg',
+    icon: 'tuya.png',
+    paletteLabel: 'smart device',
     label: function () {
       return this.deviceName || 'tuya smart device';
     },
@@ -117,6 +131,11 @@
       ) {
         $('#node-input-tuyaVersion').val(3.1);
       }
+
+      $("#node-input-queryPropertiesMap").typedInput({
+        types: ["json"]
+      });
+
     },
     oneditsave: function () {
       const storeAsCreds =
@@ -254,7 +273,7 @@
     <input type="text" id="node-input-tuyaVersion" placeholder="" value="3.1" />
   </div>
   <div class="form-row">
-    <label style="width:100%" for="node-input-subscribeMode"
+    <label style="width:100%" for="node-input-eventMode"
       ><i class="fa fa-wrench"></i> Listen to tuya events</label
     >
   </div>
@@ -278,6 +297,12 @@
       <option value="log-level-debug">Debug</option>
       <option value="log-level-disable">Disable</option>
     </select>
+  </div>
+  <div class="form-row">
+    <label style="width:100%" for="node-input-queryPropertiesMap"><i class="fa fa-file"></i> Query Properties Map</label>
+  </div>
+  <div class="form-row">
+    <input type="text" id="node-input-queryPropertiesMap">
   </div>
 </script>
 

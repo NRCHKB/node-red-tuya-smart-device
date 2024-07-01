@@ -1,0 +1,29 @@
+name: Release publish
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+          always-auth: true
+      - name: Publish
+        run: |
+          npm ci
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NODE_TKN}}
+      - name: Update Node-Red flow-library
+        uses: Zehir/update-package-node-red-flow-library-action@v1.0.5
+        continue-on-error: true
+        with:
+          package-name: '@nrchkb/node-red-tuya-smart-device'

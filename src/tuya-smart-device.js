@@ -17,6 +17,7 @@ module.exports = function (RED) {
   function TuyaSmartDeviceNode(config) {
     RED.nodes.createNode(this, config);
     config.disableAutoStart = config.disableAutoStart || false;
+    config.queryPropertiesMap = config.queryPropertiesMap !== undefined ? JSON.parse(config.queryPropertiesMap) : undefined;
     let node = this;
     let isConnected = false;
     let shouldTryReconnect = true;
@@ -366,6 +367,30 @@ module.exports = function (RED) {
       }
     });
 
+    const translateDataDps = (data) => {
+      if (config.queryPropertiesMap) {
+        let mappedData = JSON.parse(JSON.stringify(data));
+        let mappedDps = {};
+        for (const dpKey in data.dps) {
+          if (data.dps.hasOwnProperty(dpKey)) {
+            const dpId = parseInt(dpKey); // Convert the key to an integer
+            const property = config.queryPropertiesMap.result.properties.find(prop => prop.dp_id === dpId);
+            if (property) {
+              // Map the dp_id to the corresponding code
+              mappedDps[property.code] = data.dps[dpKey];
+            } else {
+              mappedDps[dpKey] = data.dps[dpKey];
+            }
+          }
+        }
+        mappedData.dps = mappedDps
+        node.logger.debug(
+            `Data from device  [event:data] mapped into: ${JSON.stringify(mappedData)}`
+        );
+        return mappedData
+      } else return data
+    }
+
     tuyaDevice.on('dp-refresh', (data) => {
       if (shouldSubscribeRefreshData) {
         node.logger.debug(
@@ -375,7 +400,7 @@ module.exports = function (RED) {
         node.send([
           {
             payload: {
-              data: data,
+              data: translateDataDps(data),
               deviceId: node.deviceId,
               deviceName: node.deviceName,
             },
@@ -394,7 +419,7 @@ module.exports = function (RED) {
         node.send([
           {
             payload: {
-              data: data,
+              data: translateDataDps(data),
               deviceId: node.deviceId,
               deviceName: node.deviceName,
             },

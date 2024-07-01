@@ -1,7 +1,7 @@
 <script type="text/javascript">
   RED.nodes.registerType('tuya-smart-device-generic', {
-    category: 'smarthome',
-    color: '#C7E9C0',
+    category: 'tuya',
+    color: '#fccdcd',
     defaults: {
       name: { value: '', required: false },
       eventMode: { value: 'event-both', required: true },
@@ -9,8 +9,8 @@
     },
     inputs: 1,
     outputs: 1,
-    icon: 'bridge.svg',
-    paletteLabel: 'tuya smart device hub',
+    icon: 'tuya.png',
+    paletteLabel: 'smart device hub',
     label: function () {
       return this.name || 'tuya smart device hub';
     },
@@ -39,7 +39,7 @@
       <input type="text" id="node-input-name" placeholder="Name" />
     </div>
     <div class="form-row">
-      <label style="width:100%" for="node-input-subscribeMode"
+      <label style="width:100%" for="node-input-eventMode"
         ><i class="fa fa-wrench"></i> Listen to tuya events</label
       >
     </div>

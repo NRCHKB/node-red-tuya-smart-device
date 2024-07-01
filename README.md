@@ -1,11 +1,13 @@
 # node-red-contrib-tuya-smart-device
 
+This package is based and continues the work of https://github.com/vinodsr/node-red-contrib-tuya-smart-device
+
 ![npm](https://img.shields.io/npm/v/node-red-contrib-tuya-smart-device)
 ![NPM](https://img.shields.io/npm/dm/node-red-contrib-tuya-smart-device)
-![Build and Publish package](https://github.com/vinodsr/node-red-contrib-tuya-smart-device/workflows/Build%20and%20Publish%20package/badge.svg)
+![Build and Publish package](https://github.com/NRCHKB/node-red-tuya-smart-device/workflows/Build%20and%20Publish%20package/badge.svg)
 ![License](https://img.shields.io/github/license/vinodsr/node-red-contrib-tuya-smart-device)
 
-A node-red module which helps you to connect to any tuya device.
+A node-red module which helps you to connect to any Tuya device.
 
 ![image](./img/sample.png)
 
@@ -31,9 +33,9 @@ A node-red module which helps you to connect to any tuya device.
 - Controls multiple device using a single node using generic node (hub node)
 - Can use device IP for communication
 - Configure retry and find intervals
-- Ability to setup Tuya Protocol Version
+- Ability to set up Tuya Protocol Version
 - Ability to listen to both `Data` and `DP-Refresh` event
-- Can store deviceId and deviceKey as crendentials
+- Can store deviceId and deviceKey as credentials
 - Better error handling
 - Better log handling
 
@@ -45,9 +47,9 @@ Instructions for getting the device id is available [here](https://github.com/co
 >
 > [https://github-wiki-see.page/m/iRayanKhan/homebridge-tuya/wiki/Get-Local-Keys-for-your-devices](https://github.com/iRayanKhan/homebridge-tuya/wiki/Get-Local-Keys-for-your-devices)
 
-You will get the device id and the key once you run the wizard program as per the instructiions
+You will get the device id and the key once you run the wizard program as per the instructions
 
-Get more details about latest version changes in the [CHANGELOG.md](./changelog.md)
+Get more details about latest version changes in the [CHANGELOG.md](CHANGELOG.md)
 
 # Setup
 
@@ -55,7 +57,7 @@ Get more details about latest version changes in the [CHANGELOG.md](./changelog.
 
 The node takes one input and one output. Once you drop the node into the flow, you need to use the deviceid and devicekey that you got from the getting started step.
 
-Once you setup the node, you can then use input to send any command to the device as per the tuya standards.
+Once you set up the node, you can then use input to send any command to the device as per the tuya standards.
 
 # Input Format
 
@@ -71,8 +73,8 @@ Once you setup the node, you can then use input to send any command to the devic
 
 > If you need the error thrown by the node use the catch node.
 
-> The status output sends the state of the client (CONNECTING,CONNECTED,ERROR or DISCONNECTED). It will only send message if the state has been changed. . eg: even though multiple errors have been thrown, only once the ERROR state will be send. One possible scenario is
-> `ERROR -> CONNECTING -> CONNECTED`. again if ERROR occurs , then the state is send out of the node.
+> The status output sends the state of the client (CONNECTING,CONNECTED,ERROR or DISCONNECTED). It will only send message if the state has been changed. . eg: even though multiple errors have been thrown, only once the ERROR state will be sent. One possible scenario is
+> `ERROR -> CONNECTING -> CONNECTED`. again if ERROR occurs , then the state is sent out of the node.
 
 # Examples
 
@@ -82,15 +84,15 @@ You can refer the [example flow](./examples/latest.json) to get started
 
 - **I am getting "Can't find device error"**
 
-  The can't find device error can be due to many reasons
+  The `can't find device` error can be due to many reasons
 
   1.  Make sure the device is powered on
-  1.  Make sure the Device ID / IP / Key are correct
-  1.  Make sure that you haven't created multiple nodes for the same device. Multiple connections to the same device is not possible. This is a limitation of TuyAPI.
+  2.  Make sure the Device ID / IP / Key are correct
+  3.  Make sure that you haven't created multiple nodes for the same device. Multiple connections to the same device is not possible. This is a limitation of TuyAPI.
 
 - **What is the difference between FindTimeout and RetryTimeout?**
 
-  `FindTimeout` is the time in milliseconds that tuya api will check for a device. Once the timeout has breached, the can't find device error is shown.
+  `FindTimeout` is the time in milliseconds that tuya api will check for a device. Once the timeout has breached, the `can't find device` error is shown.
 
   `RetryTimeout` is the time in milliseconds to wait for the node to retry the connection once the device connection is disconnected due to some unexpected errors.
 
@@ -108,4 +110,4 @@ MIT License - Copyright (c) 2020 Vinod S R
 
 [(Back to top)](#table-of-contents)
 
-Your contributions are always welcome! Please have a look at the [contribution guidelines](CONTRIBUTING.md) first. :tada:
+Your contributions are always welcome! Please have a look at the [contribution guidelines](CONTRIBUTING.md) first.
